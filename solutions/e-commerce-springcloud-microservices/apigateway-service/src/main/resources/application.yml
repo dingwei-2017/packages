@@ -1,0 +1,24 @@
+server:
+  port: 5555
+spring:
+  application:
+    name: api-gateway-service
+  zipkin:
+    base-url: http://localhost:9411
+
+zuul:
+  routes:
+    api-cart:
+      path: /cart/**
+      serviceId: cart-service
+    api-order:
+      path: /order/**
+      serviceId: order-service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+#logging:
+#  file: zuul.log
+
